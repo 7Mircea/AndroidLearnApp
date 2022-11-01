@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.myapplication.R
 import com.example.myapplication.adapters.MonstersAdapter
 import com.example.myapplication.databinding.FragmentMainBinding
@@ -53,7 +54,6 @@ class MainFragment : Fragment(), MonstersAdapter.OnItemClick {
             binding.recyclerView.adapter = MonstersAdapter(it, this)
             Log.i(TAG, "onViewCreated. it.size${it.size}")
         }
-
     }
 
     override fun onMonsterClick(monster: Monster) {

@@ -1,6 +1,5 @@
 package com.example.myapplication.ui
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import com.bumptech.glide.Glide
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentDetailBinding
 
@@ -19,7 +19,7 @@ class DetailFragment : Fragment() {
         fun newInstance() = DetailFragment()
     }
 
-    private val viewModel: MainViewModel by activityViewModels()
+    private val sharedViewModel: MainViewModel by activityViewModels()
     private lateinit var navControler: NavController
     private var binding: FragmentDetailBinding? = null
 
@@ -35,7 +35,14 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding?.viewModel = viewModel
+        binding?.apply {
+            viewModel = sharedViewModel
+            context?.let {
+                Glide.with(it)
+                    .load(viewModel?.selectedMonster?.value?.thumbnailUrl)
+                    .into(monsterImage)
+            }
+        }
     }
 
     override fun onDestroyView() {
