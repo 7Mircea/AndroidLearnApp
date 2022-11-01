@@ -20,7 +20,7 @@ class MonstersAdapter(private val monsters:List<Monster>,private val onClick: On
         holder.textView.text = monsters[position].monsterName
         with(holder) {
             holder.itemView.setOnClickListener {
-                onClick.onMonsterClick()
+                onClick.onMonsterClick(monsters[position])
             }
         }
     }
@@ -33,6 +33,6 @@ class MonstersAdapter(private val monsters:List<Monster>,private val onClick: On
     }
 
     interface OnItemClick {
-        fun onMonsterClick()
+        fun onMonsterClick(monster:Monster)
     }
 }

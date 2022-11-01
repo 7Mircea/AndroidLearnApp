@@ -30,8 +30,8 @@ class MonsterRepository(private val context: Context) {
                 getMonstersFromInternet()
             } else
                 getMonstersFromDb()
-            for (monster in list)
-                Log.i(TAG, "monsters: $monster")
+//            for (monster in list)
+//                Log.i(TAG, "monsters: $monster")
             monsters.postValue(list)
         }
     }
