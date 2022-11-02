@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -20,15 +21,20 @@ class DetailFragment : Fragment() {
     }
 
     private val sharedViewModel: MainViewModel by activityViewModels()
-    private lateinit var navControler: NavController
+    private lateinit var navController: NavController
     private var binding: FragmentDetailBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        navControler = Navigation.findNavController(requireActivity(),R.id.fragmentContainerView)
-        val fragmentBinding = FragmentDetailBinding.inflate(inflater,container,false)
+        (requireActivity() as AppCompatActivity).run {
+            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        }
+
+        navController = Navigation.findNavController(requireActivity(), R.id.navController)
+        val fragmentBinding = FragmentDetailBinding.inflate(inflater, container, false)
+        fragmentBinding.lifecycleOwner = this
         binding = fragmentBinding
         return fragmentBinding.root
     }
@@ -49,5 +55,7 @@ class DetailFragment : Fragment() {
         super.onDestroyView()
         binding = null
     }
+
+
 
 }
