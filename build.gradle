@@ -6,6 +6,7 @@ buildscript {
         room_version = '2.4.3'
         retrofit_version = '2.9.0'
         moshi_version = '1.14.0'
+        dagger_version = '2.44'
     }
 }
 plugins {

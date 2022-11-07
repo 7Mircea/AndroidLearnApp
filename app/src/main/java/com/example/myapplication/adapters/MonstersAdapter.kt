@@ -7,8 +7,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.model.Monster
+import javax.inject.Inject
 
-class MonstersAdapter(private val monsters:List<Monster>,private val onClick: OnItemClick) : RecyclerView.Adapter<MonstersAdapter.MyViewHolder>() {
+class MonstersAdapter @Inject constructor(private val monsters:List<Monster>, private val onClick: OnItemClick) : RecyclerView.Adapter<MonstersAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -19,7 +20,7 @@ class MonstersAdapter(private val monsters:List<Monster>,private val onClick: On
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.textView.text = monsters[position].monsterName
         with(holder) {
-            holder.itemView.setOnClickListener {
+            itemView.setOnClickListener {
                 onClick.onMonsterClick(monsters[position])
             }
         }

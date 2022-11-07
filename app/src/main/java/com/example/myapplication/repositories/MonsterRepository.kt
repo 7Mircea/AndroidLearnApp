@@ -16,13 +16,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import javax.inject.Inject
 
 const val TAG = "MonsterRepository"
 
-class MonsterRepository(private val context: Context) {
+class MonsterRepository @Inject constructor(private var context: Context,var db:MonsterDb) {
     var monsters: MutableLiveData<List<Monster>> = MutableLiveData()
-
-    private val db = MonsterDb.getInstance(context)
 
     init {
         CoroutineScope(Dispatchers.IO).launch {

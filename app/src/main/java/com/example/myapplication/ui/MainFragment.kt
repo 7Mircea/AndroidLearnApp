@@ -1,5 +1,6 @@
 package com.example.myapplication.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,23 +12,28 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.MonstersApplication
 import com.example.myapplication.R
 import com.example.myapplication.adapters.MonstersAdapter
 import com.example.myapplication.databinding.FragmentMainBinding
 import com.example.myapplication.model.Monster
+import javax.inject.Inject
 
 
 const val TAG = "MainFragment.java"
 
 class MainFragment : Fragment(), MonstersAdapter.OnItemClick {
 
-    companion object {
-        fun newInstance() = MainFragment()
-    }
-
-    private val viewModel: MainViewModel by activityViewModels()
+    @Inject
+    lateinit var viewModel: MainViewModel
     private lateinit var navController: NavController
     private lateinit var binding: FragmentMainBinding
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        (context.applicationContext as MonstersApplication).appComponent.inject(this)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
