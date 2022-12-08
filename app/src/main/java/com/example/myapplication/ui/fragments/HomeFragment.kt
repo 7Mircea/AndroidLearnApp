@@ -1,4 +1,4 @@
-package com.example.myapplication.ui
+package com.example.myapplication.ui.fragments
 
 import android.content.Context
 import android.os.Bundle
@@ -8,38 +8,36 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.MonstersApplication
 import com.example.myapplication.R
 import com.example.myapplication.adapters.MonstersAdapter
-import com.example.myapplication.databinding.FragmentMainBinding
+import com.example.myapplication.databinding.FragmentHomeBinding
 import com.example.myapplication.model.Monster
+import com.example.myapplication.viewmodels.HomeViewModel
 import javax.inject.Inject
 
 
-const val TAG = "MainFragment.java"
-
-class MainFragment : Fragment(), MonstersAdapter.OnItemClick {
+class HomeFragment : Fragment(), MonstersAdapter.OnItemClick {
 
     @Inject
-    lateinit var viewModel: MainViewModel
+    lateinit var viewModel: HomeViewModel
     private lateinit var navController: NavController
-    private lateinit var binding: FragmentMainBinding
+    private lateinit var binding: FragmentHomeBinding
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
-        (context.applicationContext as MonstersApplication).appComponent.inject(this)
+        (context.applicationContext as MonstersApplication).appComponent.homeSubcomponent().create().inject(this)
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentMainBinding.inflate(inflater,container,false)
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         return binding.root
     }
@@ -64,4 +62,7 @@ class MainFragment : Fragment(), MonstersAdapter.OnItemClick {
         navController.navigate(R.id.detailFragment)
     }
 
+    companion object {
+        const val TAG = "MainFragment.java"
+    }
 }

@@ -69,7 +69,7 @@ class MonsterRepository @Inject constructor(private var context: Context,var db:
     private suspend fun isConnectedOrConnectingToInternet(): Boolean {
         val connectionManager =
             context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        return connectionManager.isDefaultNetworkActive ?: false
+        return connectionManager.isDefaultNetworkActive
     }
 
 }

@@ -1,4 +1,4 @@
-package com.example.myapplication.ui
+package com.example.myapplication.ui.fragments
 
 import android.content.Context
 import android.os.Bundle
@@ -7,26 +7,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
 import com.example.myapplication.MonstersApplication
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentDetailBinding
+import com.example.myapplication.viewmodels.HomeViewModel
 import javax.inject.Inject
 
 
 class DetailFragment : Fragment() {
     @Inject
-    lateinit var sharedViewModel: MainViewModel
+    lateinit var sharedViewModel: HomeViewModel
     private lateinit var navController: NavController
     private var binding: FragmentDetailBinding? = null
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
-        (context.applicationContext as MonstersApplication).appComponent.inject(this)
+        (context.applicationContext as MonstersApplication).appComponent.homeSubcomponent().create()
     }
 
     override fun onCreateView(

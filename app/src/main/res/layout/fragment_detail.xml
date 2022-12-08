@@ -7,13 +7,13 @@
 
         <variable
             name="viewModel"
-            type="com.example.myapplication.ui.MainViewModel" />
+            type="com.example.myapplication.viewmodels.HomeViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.DetailFragment">
+        tools:context=".ui.fragments.DetailFragment">
 
         <TextView
             android:id="@+id/monsterName"

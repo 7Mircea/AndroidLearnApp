@@ -1,4 +1,4 @@
-package com.example.myapplication.ui
+package com.example.myapplication.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -9,7 +9,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class MainViewModel @Inject constructor(app: Application,var repository: MonsterRepository) : AndroidViewModel(app) {
+class HomeViewModel @Inject constructor(app: Application, var repository: MonsterRepository) : AndroidViewModel(app) {
     var monsters: MutableLiveData<List<Monster>>
     var selectedMonster = MutableLiveData<Monster>()
 
