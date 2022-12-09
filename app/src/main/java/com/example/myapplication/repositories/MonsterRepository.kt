@@ -25,9 +25,9 @@ class MonsterRepository @Inject constructor(private var context: Context,var db:
 
     init {
         CoroutineScope(Dispatchers.IO).launch {
-            val list: List<Monster> = if (isConnectedOrConnectingToInternet()) {
-                getMonstersFromInternet()
-            } else
+            val list: List<Monster> = //if (isConnectedOrConnectingToInternet()) {
+//                getMonstersFromInternet()
+//            } else
                 getMonstersFromDb()
 //            for (monster in list)
 //                Log.i(TAG, "monsters: $monster")

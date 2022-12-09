@@ -26,7 +26,7 @@ class DetailFragment : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
-        (context.applicationContext as MonstersApplication).appComponent.homeSubcomponent().create()
+        (context.applicationContext as MonstersApplication).appComponent.homeSubcomponent().create().inject(this)
     }
 
     override fun onCreateView(

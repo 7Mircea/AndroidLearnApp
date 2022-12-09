@@ -9,11 +9,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class HomeViewModel @Inject constructor(app: Application, var repository: MonsterRepository) : AndroidViewModel(app) {
-    var monsters: MutableLiveData<List<Monster>>
+class HomeViewModel @Inject constructor(app: Application, repository: MonsterRepository) : AndroidViewModel(app) {
+    var monsters: MutableLiveData<List<Monster>> = repository.monsters
     var selectedMonster = MutableLiveData<Monster>()
-
-    init {
-        monsters = repository.monsters
-    }
 }

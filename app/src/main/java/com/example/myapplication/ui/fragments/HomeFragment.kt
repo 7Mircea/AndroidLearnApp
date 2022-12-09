@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.MonstersApplication
 import com.example.myapplication.R
@@ -29,7 +30,7 @@ class HomeFragment : Fragment(), MonstersAdapter.OnItemClick {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-
+        Log.i(TAG, "onAttach: ")
         (context.applicationContext as MonstersApplication).appComponent.homeSubcomponent().create().inject(this)
     }
 
@@ -48,8 +49,7 @@ class HomeFragment : Fragment(), MonstersAdapter.OnItemClick {
         (requireActivity() as AppCompatActivity).run {
             supportActionBar?.setDisplayHomeAsUpEnabled(false)
         }
-        val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
-        navController = Navigation.findNavController(requireActivity(), R.id.navController)
+        navController = findNavController()
         viewModel.monsters.observe(viewLifecycleOwner) {
             binding.recyclerView.adapter = MonstersAdapter(it, this)
             Log.i(TAG, "onViewCreated. it.size${it.size}")

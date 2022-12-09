@@ -1,86 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/bottom_nav_height"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal">
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="match_parent">
-        <TextView
-            android:id="@+id/main_icon_text_bn"
-            android:layout_width="wrap_content"
-            android:minWidth="@dimen/width_icon_text_bn"
-            android:layout_height="@dimen/bottom_nav_badge_size"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:background="@drawable/circle"
-            android:gravity="center"
-            android:textColor="@android:color/white"
-            tools:text="@string/one"/>
-        <ImageButton
-            android:id="@+id/main_icon_img_bn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/home"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-    </androidx.constraintlayout.widget.ConstraintLayout><androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="match_parent">
-        <TextView
-            android:id="@+id/contact_icon_text_bn"
-            android:layout_width="wrap_content"
-            android:minWidth="@dimen/width_icon_text_bn"
-            android:layout_height="@dimen/bottom_nav_badge_size"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:background="@drawable/circle"
-            android:gravity="center"
-            android:textColor="@android:color/white"
-            tools:text="@string/one"/>
-        <ImageButton
-            android:id="@+id/contact_icon_img_bn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/location"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
+    <data>
 
-        <TextView
-            android:id="@+id/music_icon_text_bn"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/bottom_nav_badge_size"
-            android:background="@drawable/circle"
-            android:gravity="center"
-            android:minWidth="@dimen/width_icon_text_bn"
-            android:textColor="@android:color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="@string/one" />
+        <variable
+            name="sharedViewModel"
+            type="com.example.myapplication.viewmodels.MainViewModel" />
 
-        <ImageButton
-            android:id="@+id/music_icon_img_bn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/music"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <import type="com.example.myapplication.viewmodels.MainViewModel.BottomNavState" />
+    </data>
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bottom_nav_height"
+        android:baselineAligned="true"
+        android:orientation="horizontal">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/home_bottom_nav"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="@{()->sharedViewModel.setBottomNavState(BottomNavState.HOME)}">
+
+            <TextView
+                android:id="@+id/main_icon_text_bn"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/bottom_nav_badge_size"
+                android:background="@drawable/circle"
+                android:gravity="center"
+                android:minWidth="@dimen/width_icon_text_bn"
+                android:textColor="@android:color/white"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/one" />
+
+            <ImageButton
+                android:id="@+id/main_icon_img_bn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/home"
+                android:contentDescription="@string/home"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/contact_bottom_nav"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:onClick="@{()->sharedViewModel.setBottomNavState(BottomNavState.CONTACT)}"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/contact_icon_text_bn"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/bottom_nav_badge_size"
+                android:background="@drawable/circle"
+                android:gravity="center"
+                android:minWidth="@dimen/width_icon_text_bn"
+                android:textColor="@android:color/white"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/one" />
+
+            <ImageButton
+                android:id="@+id/contact_icon_img_bn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/location"
+                android:contentDescription="@string/contact"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/music_bottom_nav"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:onClick="@{()->sharedViewModel.setBottomNavState(BottomNavState.MUSIC)}"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/music_icon_text_bn"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/bottom_nav_badge_size"
+                android:background="@drawable/circle"
+                android:gravity="center"
+                android:minWidth="@dimen/width_icon_text_bn"
+                android:textColor="@android:color/white"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/one" />
+
+            <ImageButton
+                android:id="@+id/music_icon_img_bn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/music"
+                android:contentDescription="@string/music"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+</layout>
