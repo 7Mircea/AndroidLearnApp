@@ -2,7 +2,9 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
+
         <variable
             name="sharedViewModel"
             type="com.example.myapplication.viewmodels.MainViewModel" />
@@ -15,7 +17,7 @@
         tools:context=".ui.activities.MainActivity">
 
         <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/navController"
+            android:id="@+id/navHostFragment"
             android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -29,11 +31,11 @@
             tools:layout_editor_absoluteX="1dp"
             tools:layout_editor_absoluteY="1dp" />
 
-        <include
-            layout="@layout/bottom_nav_layout"
-            tools:layout="@layout/bottom_nav_layout"
-            app:sharedViewModel="@{sharedViewModel}"
-            />
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_nav"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:menu="@menu/bottom_states" />
 
     </LinearLayout>
 </layout>

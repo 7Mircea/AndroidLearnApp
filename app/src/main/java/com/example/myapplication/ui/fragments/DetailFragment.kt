@@ -37,7 +37,7 @@ class DetailFragment : Fragment() {
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
         }
 
-        navController = Navigation.findNavController(requireActivity(), R.id.navController)
+        navController = Navigation.findNavController(requireActivity(), R.id.navHostFragment)
         val fragmentBinding = FragmentDetailBinding.inflate(inflater, container, false)
         fragmentBinding.lifecycleOwner = this
         binding = fragmentBinding
