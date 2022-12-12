@@ -11,4 +11,5 @@
     <string name="home">home tab</string>
     <string name="music_fragment">music fragment</string>
     <string name="contact_tab">contact tab</string>
+    <string name="to_maps">See location on Maps</string>
 </resources>

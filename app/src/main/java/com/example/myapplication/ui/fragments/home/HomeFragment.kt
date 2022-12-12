@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.fragments
+package com.example.myapplication.ui.fragments.home
 
 import android.content.Context
 import android.os.Bundle
@@ -9,9 +9,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.MonstersApplication
 import com.example.myapplication.R
 import com.example.myapplication.adapters.MonstersAdapter
