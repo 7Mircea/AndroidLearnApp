@@ -76,6 +76,6 @@ dependencies {
     kapt "com.google.dagger:dagger-android-processor:$dagger_version"
     // maps
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
-    //plugin for hiding secrets from version control
+
 
 }

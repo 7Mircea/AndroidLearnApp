@@ -8,4 +8,6 @@
     <dimen name="bottom_nav_badge_size">20dp</dimen>
     <dimen name="width_icon_text_bn">24dp</dimen>
     <dimen name="large_size">36sp</dimen>
+    <dimen name="normal_size">12sp</dimen>
+    <dimen name="large_margin_size">24dp</dimen>
 </resources>

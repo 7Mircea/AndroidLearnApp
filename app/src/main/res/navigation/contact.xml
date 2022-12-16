@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/contactFragment"
         android:name="com.example.myapplication.ui.fragments.contact.ContactFragment"
-        android:label="fragment_contact"
+        android:label="Contact Fragment"
         tools:layout="@layout/fragment_contact" >
         <action
             android:id="@+id/action_contactFragment_to_mapsFragment"
@@ -17,6 +17,6 @@
     <fragment
         android:id="@+id/mapsFragment"
         android:name="com.example.myapplication.ui.fragments.contact.MapsFragment"
-        android:label="fragment_maps"
+        android:label="Maps Fragment"
         tools:layout="@layout/fragment_maps" />
 </navigation>
